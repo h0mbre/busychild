@@ -16,6 +16,11 @@ Currently, Busychild displays the following process information:
 + socket inodes and the pids with which this inode is shared, and
 + pipe inodes and the pids with which this inode is shared
 
+## Installation
++ `git clone https://github.com/h0mbre/busychild`
++ `cd busychild`
++ `cargo build --release`
+
 ## Usage
 ```
 OPTIONS:
