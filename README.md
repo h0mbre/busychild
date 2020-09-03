@@ -17,6 +17,20 @@ Currently, Busychild displays the following process information:
 + pipe inodes and the pids with which this inode is shared
 
 ## Usage
+```
+OPTIONS:
+	-q, --quiet	only print information for target pid
+	-s, --socket	print information for specific socket inode
+	-p, --pipe	print information for specific pipe inode
+	-h, --help	print this!
+EXAMPLES:
+	usage: ./busychild <pid> <options>
+	usage: ./busychild 1337
+	usage: ./busychild 1337 -q
+	usage: ./busychild <inode switch> <inode number>
+	usage: ./busychild -s 1337
+	usage: ./busychild -p 1337
+```
 
 ### Default Mode
 The default mode will take a target pid,  `sysargv[1]`, and will recursively map out both parents of the pid and children of the pid. This mode will then color-code each discovered process node and arrange them in a `pstree`-like hiearchy.
