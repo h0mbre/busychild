@@ -113,3 +113,7 @@ cmd: /sbin/initautonoprompt
                socket:[2733177]: 121540/sh
                socket:[2733179]: 121540/sh
 ```
+
+<p align="left">
+  <img src=/output.png></img>
+</p>
