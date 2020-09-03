@@ -5,6 +5,9 @@ Hopefully the code isn't completely opaque and users are able to modify it to su
 
 Busychild is in a very early stage, please report any bugs! The code could use a heavy dose of refactoring, but it seems to be in a working state. **I've hardcoded a constant in the code in order to render the process start times as a UTC timestamp correctly, this constant is the `_SC_CLK_TCK` which, when used in conjuction with the process' start time and the OS boot time, can give you a UTC timestamp. This constant is set to 100 on my machine, please check yours in order to get the right result**
 
+## Thanks
+Big thanks to @epi052 who actually wrote most of the recursive child discovery code! 
+
 Currently, Busychild displays the following process information:
 + pid and process name,
 + parent pid,
