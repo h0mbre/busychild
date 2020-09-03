@@ -115,5 +115,5 @@ cmd: /sbin/initautonoprompt
 ```
 
 <p align="left">
-  <img src=/output.png></img>
+  <img src=/default.PNG></img>
 </p>
