@@ -1,0 +1,2 @@
+## Busychild
+Busychild is a `pstree` like utility with some added functionality built on. Busychild is aimed at getting a better understand of the complexity of applications which create numerous child processes. Busychild should allow users to peek into a portion of the IPC being used by the target process and highlight shared file descriptors (sockets (not datagram afaik), pipes) with other processes.  
