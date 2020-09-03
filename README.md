@@ -61,59 +61,7 @@ Pipe mode can be utilized as follows:
 + `./busychild --pipe <socket_number>`
 
 ## Output
-Here is some sample output for default mode with pid `121486`. For color coding output, see this image: 
-```
-pid/proc: 1/systemd, ppid: 0, level, 0
-owner: 0, start: 2020-08-16 00:05:39 UTC, threads: 1
-cmd: /sbin/initautonoprompt
-│
-│
-└──pid/proc: 121403/code, ppid: 1, level, 1
-   owner: 1000, start: 2020-09-01 22:11:17 UTC, threads: 27
-   cmd: /usr/share/code/code --no-sandbox --unity-launch
-   socket:[2731821]: 121407/code, 121450/code, 121486/code, 121504/code, 121622/code
-   socket:[53569]: 121407, 121431, 121438, 121450, 121504, 121622, 126855, 126899, 126949, 126987, 2352
-   socket:[53570]: 121407, 121431, 121438, 121450, 121504, 121622, 126855, 126899, 126949, 126987, 2352
-   │
-   │
-   └──pid/proc: 121450/code, ppid: 121403, level, 2
-      owner: 1000, start: 2020-09-01 22:11:18 UTC, threads: 19
-      cmd: /usr/share/code/code --type=renderer --disable-color-correct-rendering --no-sand...<snip>
-      socket:[2731821]: 121403/code, 121407/code, 121486/code, 121504/code, 121622/code
-      socket:[2731926]: 121486/code, 121504/code
-      socket:[2732789]: 121486/code, 121504/code
-      socket:[2732811]: 121486/code, 121504/code, 121540/sh, 121541/rls
-      socket:[53569]: 121403, 121407, 121431, 121438, 121504, 121622, 126855, 126899, 126949, 126987, 2352
-      socket:[53570]: 121403, 121407, 121431, 121438, 121504, 121622, 126855, 126899, 126949, 126987, 2352
-      │
-      │
-      └──pid/proc: 121486/code, ppid: 121450, level, 3
-         owner: 1000, start: 2020-09-01 22:11:19 UTC, threads: 18
-         cmd: /usr/share/code/code--inspect-port=0/usr/share/code/resources/app/out/bootstra...<snip>
-         socket:[2731821]: 121403/code, 121407/code, 121450/code, 121504/code, 121622/code
-         socket:[2731926]: 121450/code, 121504/code
-         socket:[2732789]: 121450/code, 121504/code
-         socket:[2732811]: 121450/code, 121504/code, 121540/sh, 121541/rls
-         │
-         │
-         └──pid/proc: 121540/sh, ppid: 121486, level, 4
-            owner: 1000, start: 2020-09-01 22:11:21 UTC, threads: 1
-            cmd: /bin/sh-crustup run stable-x86_64-unknown-linux-gnu rls
-            socket:[2732811]: 121450/code, 121486/code, 121504/code, 121541/rls
-            socket:[2733175]: 121541/rls
-            socket:[2733177]: 121541/rls
-            socket:[2733179]: 121541/rls
-            │
-            │
-            └──pid/proc: 121541/rls, ppid: 121540, level, 5
-               owner: 1000, start: 2020-09-01 22:11:21 UTC, threads: 5
-               cmd: /home/h0mbre/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rls
-               socket:[2732811]: 121450/code, 121486/code, 121504/code, 121540/sh
-               socket:[2733175]: 121540/sh
-               socket:[2733177]: 121540/sh
-               socket:[2733179]: 121540/sh
-```
-
+Here is some sample output for default mode with pid `121486`.
 <p align="left">
   <img src=/default.PNG></img>
 </p>
