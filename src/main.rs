@@ -451,50 +451,57 @@ fn default_display(input: Vec<CompleteProc>) {
             "parent"
         };
 
-        // spacing a function of level + the chars needed for tree
-        let level = input[x].level as usize - 1;
+        let (head_space, body_space, end_space) = if x != 0 {
+            // spacing a function of level + the chars needed for tree
+            let level = input[x].level as usize - 1;
 
-        // these are the chars that will be placed on the first line of a node
-        let mut head_space = match prev_relation {
-            "brother" => bro_head_spacers[level].clone(),
-            "end"     => "└──".to_string(),
-            "parent"  => parent_head_spacers[level].clone(),
-            "child"   => bro_head_spacers[level].clone(),
-            _ => panic!(),
-        };
+            // these are the chars that will be placed on the first line of a node
+            let head_space = match prev_relation {
+                "brother" => bro_head_spacers[level].clone(),
+                "end"     => "└──".to_string(),
+                "parent"  => parent_head_spacers[level].clone(),
+                "child"   => bro_head_spacers[level].clone(),
+                _ => panic!(),
+            };
 
-        // these will be placed on every subsequent line of a node
-        let mut body_space: String;
-        match prev_relation {
-            "brother" => {
-                body_space = body_spacers[level].clone();
-            }
-            "end"     => {
-                body_space = body_spacers[0].clone();
-            }
-            "parent"  => {
-                body_space = body_spacers[level].clone();
-            }
-            "child"   => {
-                body_space = body_spacers[level].clone();
-            }
-            _ => panic!(),
-        };
+            // these will be placed on every subsequent line of a node
+            let body_space: String;
+            match prev_relation {
+                "brother" => {
+                    body_space = body_spacers[level].clone();
+                }
+                "end"     => {
+                    body_space = body_spacers[0].clone();
+                }
+                "parent"  => {
+                    body_space = body_spacers[level].clone();
+                }
+                "child"   => {
+                    body_space = body_spacers[level].clone();
+                }
+                _ => panic!(),
+            };
 
-        // this is the last line of a node
-        let mut end_space: String;
-        if next_relation == "child" || next_relation == "brother" {
-            end_space = "   ".repeat(level + 1).to_string();
-            end_space.push_str("│");
+            // this is the last line of a node
+            let mut end_space: String;
+            if next_relation == "child" || next_relation == "brother" {
+                end_space = "   ".repeat(level + 1).to_string();
+                end_space.push_str("│");
+            } else {
+                end_space = "".to_string();
+            }
+
+            (head_space, body_space, end_space)
         } else {
-            end_space = "".to_string();
-        }
-        
-        if x == 0 {
-            head_space = "".to_string();
-            body_space = "".to_string();
-            end_space = "│".to_string();
-        }
+            // in this case, our node is the first node in our 
+            // vector of CompleteProcs, and we simply hardcode
+            // all of the spacing values
+            let head_space = "".to_string();
+            let body_space = "".to_string();
+            let end_space = "│".to_string();
+
+            (head_space, body_space, end_space)
+        };
 
         match input[x].relation.as_str() {          
             "Parent" => {
@@ -651,12 +658,13 @@ fn default_display(input: Vec<CompleteProc>) {
         }
         println!("{}\n{}", end_space, end_space);
     }
+
 }
 
 fn quiet_display(input: Vec<CompleteProc>) {
     println!();
     for item in &input {
-        if item.relation == "Target".to_string() {
+        if item.relation == "Target" {
         macro_rules! color_print {() => ("\x1B[1;36m{}\x1B[0m")};
             println!("{}: {}/{}, {}: {}", 
                 format!(color_print!(), "pid/proc"),
@@ -863,7 +871,6 @@ fn help() {
     println!("\tusage: ./busychild <inode switch> <inode number>");
     println!("\tusage: ./busychild -s 1337");
     println!("\tusage: ./busychild -p 1337");
-    return;
 }
 
 fn main() {
