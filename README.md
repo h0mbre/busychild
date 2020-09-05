@@ -5,6 +5,8 @@ Hopefully the code isn't completely opaque and users are able to modify it to su
 
 Busychild is in a very early stage, please report any bugs! The code could use a heavy dose of refactoring, but it seems to be in a working state. **I've hardcoded a constant in the code in order to render the process start times as a UTC timestamp correctly, this constant is the `_SC_CLK_TCK` which, when used in conjuction with the process' start time and the OS boot time, can give you a UTC timestamp. This constant is set to 100 on my machine, please check yours in order to get the right result**
 
+Tested on Ubuntu 18.04: `5.4.0-42-generic #46~18.04.1-Ubuntu SMP Fri Jul 10 07:21:24 UTC 2020 x86_64 x86_64 x86_64 GNU/Linux`
+
 ## Thanks
 Big thanks to @epi052 who actually wrote most of the recursive child discovery code! 
 
